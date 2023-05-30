@@ -1,2 +1,5 @@
-<p>User with ID _ID_ loaded.</p>
-<p>User name is _NAME_</p>
+<p>User with ID {{user.id}} loaded.</p>
+<p>User name is {{user.name}}</p>
+<hr>
+<!-- use brackets for routerLink is because we want to bind it dynamically, without the brackets it's bind with static values -->
+<a [routerLink]="['/users', 10, 'Anna']">Load Anna (10)</a>
