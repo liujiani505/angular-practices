@@ -14,6 +14,14 @@ export class AppComponent {
   defaultUsername = 'Jiani';
   answer = '';
   genders = ['male', 'female'];
+  user = {
+    username: '',
+    email: '',
+    secretQuestion: '',
+    answer: '',
+    gender:''
+  }
+  submitted: boolean = false;
 
   suggestUserName() {
     const suggestedName = 'Superuser';
@@ -34,7 +42,8 @@ export class AppComponent {
           }
         })
 
-    // these are trying different approaches by using @viewchild to just the username input   
+    // these are trying different approaches by using @viewchild to just the username input 
+    // one note: you have to call this line of code after the "ngAfterViewInit" lifecycle hook, because @ViewChild isn't available until after Angular has finished initializing the component's view.
     // this.userName.control.setValue(suggestedName);
     // this.userName.nativeElement.value = suggestedName;
   }
@@ -42,6 +51,13 @@ export class AppComponent {
   //   console.log(form)
   // }
     onSubmit(){
-    console.log(this.signupForm)
+      console.log(this.signupForm)
+      this.submitted = true;
+      // here we're accessing the value of the username field from the form values and assigning it to "this.user.username". This is a read operation. We're simply reading the current value of the username field from the form and setting that value to the username property of your user object. On the other hand, this.signupForm.value = "" won't work, because we're tyring to assign a new value, which is not allowed. This is write operation. The value property of NgForm is read-only.Its purpose is to provide you with the current state of the form. It doesn't allow you to directly set the values of the form fields. The correct to set form values is by using setValue method..
+      this.user.username = this.signupForm.value.userData.username;
+      this.user.email = this.signupForm.value.userData.email;
+      this.user.secretQuestion = this.signupForm.value.secret;
+      this.user.answer = this.signupForm.value.questionAnswer;
+      this.user.gender = this.signupForm.value.gender;
   }
 }
