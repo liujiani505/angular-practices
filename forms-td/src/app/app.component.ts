@@ -59,5 +59,8 @@ export class AppComponent {
       this.user.secretQuestion = this.signupForm.value.secret;
       this.user.answer = this.signupForm.value.questionAnswer;
       this.user.gender = this.signupForm.value.gender;
+
+      // not just the value, this will also reset the states of the form, like valid, touched..
+      this.signupForm.reset();
   }
 }
