@@ -43,6 +43,8 @@ export class AppComponent implements OnInit{
   // {[s:string]:boolean} is the return type of the function
   // [s:string] specifices that the key names of the object will be type of string. brackets is used when you don't know the names of the key name, but you know the type of the values. s is just a placeholder.
   // boolean specifies that the values associated with these keys will be of type boolean.
+  // Inside forbiddenNames in checks if the value of the control(username input) is present in the forbiddenUsernames array, if it is, the function returns an error object `{'nameIsForbidden':true}`.
+  // Angular treats any non-null and non-undefined return value from a validator as a validation error. When {'nameIsForbidden': true} is returned, Angular knows that the 'username' control is invalid because of the 'nameIsForbidden' error.
   forbiddenNames(control: FormControl):{[s:string]:boolean}{
     if( this.forbiddenUsernames.indexOf(control.value) !== -1){
       return {'nameIsForbidden': true};
