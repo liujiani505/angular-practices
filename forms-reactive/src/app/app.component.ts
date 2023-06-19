@@ -45,6 +45,7 @@ export class AppComponent implements OnInit{
   // boolean specifies that the values associated with these keys will be of type boolean.
   // Inside forbiddenNames in checks if the value of the control(username input) is present in the forbiddenUsernames array, if it is, the function returns an error object `{'nameIsForbidden':true}`.
   // Angular treats any non-null and non-undefined return value from a validator as a validation error. When {'nameIsForbidden': true} is returned, Angular knows that the 'username' control is invalid because of the 'nameIsForbidden' error.
+  // The decision to return an object from a validator instead of other types is by design in Angular.
   forbiddenNames(control: FormControl):{[s:string]:boolean}{
     if( this.forbiddenUsernames.indexOf(control.value) !== -1){
       return {'nameIsForbidden': true};
