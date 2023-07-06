@@ -1,7 +1,9 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'filter'
+  name: 'filter',
+  pure: false, 
+  // angular pipe doesn't update automatically whenever data changes, but if we set pure to false, the filter pipe gets udpated.
 })
 export class FilterPipe implements PipeTransform {
 
@@ -20,3 +22,5 @@ export class FilterPipe implements PipeTransform {
   }
 
 }
+
+
