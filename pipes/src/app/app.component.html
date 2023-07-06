@@ -11,7 +11,7 @@
             {{ server.status }}
           </span>
           <!-- The order of the pipes matter from left to right-->
-          <strong>{{ server.name }}</strong> | 
+          <strong>{{ server.name | shorten }}</strong> | 
           {{ server.instanceType | uppercase }} | 
           {{ server.started | date:'fullDate' | uppercase}}
         </li>
